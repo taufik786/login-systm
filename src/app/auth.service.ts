@@ -33,9 +33,5 @@ export class AuthService {
     }
 
 
-  // register(body: any): Observable<any> {
-  //   return this.http.post('https://articleuat.study24x7.net:8443/4.0.0.1/article/getSnglArtlDetails', body)
-  // }
-
 
 }

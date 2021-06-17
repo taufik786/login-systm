@@ -3,11 +3,11 @@
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col" *ngFor="let item of articals">
       <div class="card">
-        <img src="https://www.gettyimages.in/gi-resources/images/500px/983794168.jpg" class="card-img-top" alt="...">
+        <img src="{{item.ARTICLE_COVER_URL + '/' + item.ARTICLE_UUID + '.png?v=' + item.IMG_UPD_DT}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{ item.ARTICLE_TITLE }} </h5>
           <p>{{item.ARTICLE_READ_TIME}} min read . {{item.TOTAL_VIEW_COUNT}} views</p>
-          <p class="card-text">{{item.ARTICLE_INNER_TEXT }}</p>
+          <p class="card-text">{{decodeURIPostData(item.ARTICLE_INNER_TEXT) }}</p>
 
           <div class="d-flex">
             <button class="btn btn-success circle">S</button>
