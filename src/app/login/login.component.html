@@ -1,0 +1,22 @@
+<div class="container bg-danger">
+  <div class="col col-md-6 mx-auto" style="background-color: gainsboro;">
+    <h1 class="py-3 px-2">Login Here!</h1>
+    <form class="row g-3 p-3" [formGroup]="LoginForm" (ngSubmit)="Login()">
+      <div class="col-12">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" placeholder="youremail@xyz.com" formControlName="email">
+      </div>
+      <div class="col-12">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" placeholder="Enter your password" formControlName="password">
+      </div>
+
+      <div class="col-12">
+        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+          <button type="submit" class="btn btn-success">Login</button>
+          <button class="btn btn-primary" routerLink="/register">Register-Here</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
