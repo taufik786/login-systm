@@ -5,7 +5,7 @@ import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   RegisterForm: FormGroup;
@@ -15,20 +15,22 @@ export class RegisterComponent implements OnInit {
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      number: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(12)]],
+      number: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(12),
+        ],
+      ],
       dob: ['', Validators.required],
-      password: ['', Validators.required]
-    })
+      password: ['', Validators.required],
+    });
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {}
 
-  Register(){
+  Register() {
     console.log(this.RegisterForm.value);
-    this.authService.register(this.RegisterForm.value).subscribe(res => {
-      console.log(res);
-
-    })
   }
-
 }

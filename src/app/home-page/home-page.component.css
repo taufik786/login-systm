@@ -1,0 +1,12 @@
+.circle{
+  width: 50px;
+  border-radius: 50px;
+}
+.tt>p{
+  /* color: red; */
+  margin: 0;
+}
+.tt>p:first-child{
+  color: tomato;
+  cursor: pointer;
+}
