@@ -1,11 +1,91 @@
 <div class="container">
+  <div class="col-md-12 d-flex py-3">
+
+    <div class="col col-9">
+      <h1>{{decodeURIPostData(responseData?.ARTICLE_TITLE)}}</h1>
+      <div class="d-flex">
+        <button class="btn btn-success circle">S</button>
+        <div class="mx-3 tt">
+          <p>{{responseData?.USER_FULL_NAME}}</p>
+          <p>{{TimeInMnt}} read . {{responseData?.TOTAL_VIEW_COUNT}} views</p>
+        </div>
+      </div>
+      <p class="text-center" style="position: relative; top: -22px;">Updated on {{DateFormat | date: 'dd MM yyyy'}}</p>
+
+      <div class="col col-md-9 mx-auto">
+        <img class="mongodb-img"
+          src="{{responseData?.ARTICLE_COVER_URL + '/' + responseData?.ARTICLE_UUID + '.png?v=' + responseData?.IMG_UPD_DT}}"
+          alt="">
+      </div>
+
+      <div class="row mt-3">
+        <div class="col col-sm-3" style="border-right: 1px solid gray; width: 180px;">
+          <h6>Share this article</h6>
+          <i class="p-3 icon fa fa-facebook-f"></i>
+          <i class="p-3 icon fa fa-instagram"></i>
+          <i class="p-3 icon fa fa-linkedin"></i>
+          <i class="p-3 icon fa fa-whatsapp"></i>
+
+        </div>
+        <div class="col col-sm-9">
+          <div class="mx-2 mongodb-font">
+            <p [innerHTML]="decodeURIPostData(MongoDatas?.ARTICLE_TEXT)"></p>
+
+              <div class="d-flex">
+                <p class="btn-grey">SSC</p>
+                <p class="btn-grey">Railway</p>
+                <p class="btn-grey">Banking/IRDA</p>
+              </div>
+              <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <h5>Trending Articals</h5>
+      <hr>
+      <div *ngFor="let item of trendings">
+        <div class="d-flex">
+          <img *ngIf="item.ARTICLE_COVER_URL" class="img"
+            src="{{item.ARTICLE_COVER_URL + '/' + item.ARTICLE_UUID + '.png?v=' + item.IMG_UPD_DT}}" alt="">
+          <div class="mx-3">
+            <p>{{decodeURIPostData(item.ARTICLE_TITLE)}}</p>
+            <p class="text-secondary">By {{item.USER_FULL_NAME}}</p>
+          </div>
+        </div>
+        <hr>
+      </div>
+
+      <h5>Featured Course</h5>
+      <div class="card" style="width: 18rem;">
+        <img src="{{featureCources?.IMG}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <img class="img-position" src="{{featureCources?.COURSE_COVER_PHOTO_PATH}}" alt="">
+          <h5 class="card-title">{{featureCources?.COURSE_TITLE}}</h5>
+          <p class="card-text text-secondary">by {{featureCources?.PAGE_TITLE}}</p>
+          <p class="text-secondary"><span class="text-danger"><i class="fa fa-star"></i><i class="fa fa-star"></i><i
+                class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+            {{featureCources?.COURSE_RATING}} ({{featureCources?.TOTAL_COURSE_RATING_COUNT}} ratings)</p>
+          <p><i class="fa fa-graduation-cap"></i> {{featureCources?.TOTAL_ENROLLED_USER}} Enrollements</p>
+          <p><i class="fa fa-clock-o"></i> Validity {{featureCources?.VALIDITY}} days</p>
+          <p class="text-end"><s class="fa fa-rupee text-secondary">{{featureCources?.COURSE_PRICE[0].COST}}</s> <i
+              class="fa fa-rupee px-3">{{featureCources?.COURSE_PRICE[0].DISCOUNT_COST}}</i></p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <hr style="background-color: blue; height: 2px;">
   <h1 class="text-center py-4">Check these related articles on Study24x7</h1>
   <div class="row row-cols-1 row-cols-md-3 g-4">
     <div class="col" *ngFor="let item of articals">
       <div class="card">
-        <img src="{{item.ARTICLE_COVER_URL + '/' + item.ARTICLE_UUID + '.png?v=' + item.IMG_UPD_DT}}" class="card-img-top" alt="...">
+        <img src="{{item.ARTICLE_COVER_URL + '/' + item.ARTICLE_UUID + '.png?v=' + item.IMG_UPD_DT}}"
+          class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">{{ item.ARTICLE_TITLE }} </h5>
+          <h5 class="card-title">{{ decodeURIPostData(item.ARTICLE_TITLE) }} </h5>
           <p>{{item.ARTICLE_READ_TIME}} min read . {{item.TOTAL_VIEW_COUNT}} views</p>
           <p class="card-text">{{decodeURIPostData(item.ARTICLE_INNER_TEXT) }}</p>
 
@@ -16,7 +96,7 @@
               <p>{{item.FOLLOWER_COUNT}} Followers</p>
             </div>
           </div>
+        </div>
       </div>
     </div>
   </div>
-</div>

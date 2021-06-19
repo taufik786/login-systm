@@ -1,14 +1,57 @@
-.circle{
+.circle {
   width: 50px;
   border-radius: 50px;
 }
-.tt>p{
+.tt > p {
   margin: 0;
 }
-.tt>p:first-child{
+.tt > p:first-child {
   color: tomato;
   cursor: pointer;
 }
-.card-img-top{
+.card-img-top {
   height: 200px;
+}
+
+.img {
+  width: 85px;
+  height: 66px;
+  border-radius: 10px;
+}
+.img-position {
+  position: absolute;
+  top: 165px;
+  left: 10px;
+  border-radius: 85px;
+  width: 50px;
+  height: 50px;
+}
+.mongodb-img {
+  width: 500px;
+}
+.icon {
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin: 4px 5px;
+  font-size: 25px;
+  font-weight: bold;
+  height: 52px;
+  width: 65px;
+  text-align: center;
+  cursor: pointer;
+}
+.icon:hover{
+  background-color: greenyellow;
+}
+.mongodb-font{
+  font-size: 19px;
+  font-family:'Times New Roman', Times, serif;
+}
+.btn-grey{
+  outline: none;
+  border: none;
+  border-radius: 15px;
+  background-color: rgb(238, 235, 235);
+  margin: 0 5px;
+  padding: 0 15px;
 }
